@@ -13,12 +13,12 @@ private static String Ra = null;
 private static String title = null;
 private static String abstracts = null;
 private static String value = null;*/
-public static ValuesWriter myVals = null;
-public ShowExcData(ValuesWriter myVar) {
-	myVals = myVar;
+public static FindAndReplace myFinder = null;
+public ShowExcData(FindAndReplace myFinders) {
+	myFinder = myFinders;
 }
 
-public void showExelData(List data) {
+public void showExelData(List data, String directory) {
 	//
 	// Iterates the data and prints it out to the console.
 	    	//Creates a for loop that will iterate for the number of rows we have in the excel file
@@ -36,36 +36,40 @@ public void showExelData(List data) {
 	            //System.out.println(value);
 	           if (j==0) {
 	            	String name = excelvals.getRichStringCellValue().getString();
-	            	myVals.propsWriter(name);
+	            	myFinder.setAuthor(name);
 	            	System.out.println(name);
 	            }
 	            else if (j==1) {
 	            	
 	            	String college = excelvals.getRichStringCellValue().getString();
-	            	myVals.propsWriter(college);
+	            	myFinder.setCollege(college);
 	            	System.out.println(college);
 	            }
 	            else if (j==2) {
 	            	String majors = excelvals.getRichStringCellValue().getString();
-	            	myVals.propsWriter(majors);
+	            	myFinder.setMajor(majors);
 	            	System.out.println(majors);
 	            }
 	            else if (j==3) {
 	            	String Ra = excelvals.getRichStringCellValue().getString();
-	            	myVals.propsWriter(Ra);
+	            	myFinder.setMentor(Ra);
 	            	System.out.println(Ra);
 	            }
 	            else if (j==4) {
 	            	String title = excelvals.getRichStringCellValue().getString();
-	            	myVals.propsWriter(title);
+	            	myFinder.setTitle(title);
 	            	System.out.println(title);
 	            }
-	            else  {
+	            else if (j==5)  {
 	            	String abstracts = excelvals.getRichStringCellValue().getString();
-	            	myVals.propsWriter(abstracts);
+	            	myFinder.setCollege(abstracts);
 	            	System.out.println(abstracts);
+	            	myFinder.replaceVals(directory);
 	            }
-	           
+	            else {
+	            	System.out.println("This should work");
+	            }
+	           //myVals.closeIt();
 	           // storeVars(name, college, majors, Ra, title, abstracts);
 	            //System.out.print("Life is Great");
 	            //Prints out each value in the row 
@@ -84,7 +88,7 @@ public void showExelData(List data) {
 } */
 	        }
 	    	}
-	    	myVals.closeIt();
+	    
 }
 }
 

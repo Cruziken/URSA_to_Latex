@@ -21,8 +21,9 @@ public class ValuesWriter {
 	 * This method takes in a file and intializes the fileWriter and buffWriter
 	 * 
 	 * @param filename
+	 * @return 
 	 */
-	public ValuesWriter(String filename, String localPath) {
+	public void readValues(String filename, String localPath) {
 
 		// Creates (or gets access to ) a file from this absolute path
 		File file = new File(localPath +"//"+ filename);
