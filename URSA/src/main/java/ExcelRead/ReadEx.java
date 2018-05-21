@@ -12,7 +12,9 @@ private static String directory = null;
 
 
 		public static void startIt() {
-			FindAndReplace myFind = new FindAndReplace();
+			ToLaTeX myLua = new ToLaTeX();
+			FindAndReplace myFind = new FindAndReplace(myLua);
+			
 			//ValuesWriter myValues = new ValuesWriter(); 
 			ShowExcData myExceldata = new ShowExcData(myFind);
 			IterateRow myIterator = new IterateRow();

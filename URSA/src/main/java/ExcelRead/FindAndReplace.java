@@ -9,10 +9,15 @@ import java.io.IOException;
 
 public class FindAndReplace {
 	
-	private static String author, mentor, college, major, title, abstracts = null;
-	
+	private static String author, mentor, college, major, title, abstracts,path = null;
+	private static ToLaTeX mylu = null;
+	public FindAndReplace(ToLaTeX myLua) {
+		// TODO Auto-generated constructor stub
+		mylu = myLua;
+	}
 	public String setAuthor(String auth) {
 		author = auth;
+		
 		return author;
 	}
 	public String setMentor(String ment) {
@@ -56,13 +61,15 @@ public class FindAndReplace {
              replacedtext = replacedtext.replaceAll("MAJOR!!!", "" + major);
              replacedtext = replacedtext.replaceAll("DEPARTMENT!!!", "" + college);
              replacedtext = replacedtext.replaceAll("ABSTRACT!!!", "" + abstracts);
-
-             FileWriter writer = new FileWriter(directory + "//"+  author + ".tex");
+             author = author.replaceAll(" ", "_");
+             path = directory + "//"+  author + ".tex";
+             FileWriter writer = new FileWriter(path);
              writer.write(replacedtext);
-
-
+             
+             
              writer.close();
-
+             mylu.setVars(directory, author);
+             mylu.commandPrompt();
          }
          catch (IOException ioe)
              {

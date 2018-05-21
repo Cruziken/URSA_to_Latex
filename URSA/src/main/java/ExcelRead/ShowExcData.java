@@ -62,7 +62,7 @@ public void showExelData(List data, String directory) {
 	            }
 	            else if (j==5)  {
 	            	String abstracts = excelvals.getRichStringCellValue().getString();
-	            	myFinder.setCollege(abstracts);
+	            	myFinder.setAbstracts(abstracts);
 	            	System.out.println(abstracts);
 	            	myFinder.replaceVals(directory);
 	            }
