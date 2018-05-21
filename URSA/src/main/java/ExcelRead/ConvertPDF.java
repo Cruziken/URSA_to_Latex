@@ -100,7 +100,9 @@ public class ConvertPDF {
 	    	            File desktop = new File(System.getProperty("user.home") + File.separator + "Desktop");
 
 	    	            JLRGenerator pdfGen = new JLRGenerator();           
-
+	    	            //JLRConverter converter = new JLRConverter(workingDirectory);
+	    	            //StringBuilder replaced = new StringBuilder().append("\\").append("%");
+	    	            //converter.replace("%", replaced);
 	    	            try {
 							if (!pdfGen.generate(template, desktop, workingDirectory)) { 
 							    System.out.println(pdfGen.getErrorMessage());

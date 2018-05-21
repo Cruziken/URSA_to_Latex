@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 //import org.scilab.forge.jlatexmath.*;
 
 
@@ -131,7 +132,7 @@ try {
 		// Converts whatever command to console
 		System.out.printf("Output of running %s is:\n", Arrays.toString(command));
 		// In case the lines are duds
-		System.out.println("wHat"); 
+		// System.out.println("wHat"); 
 		
 		try {
 			// While the bufferedreader is giving content and no null values do
@@ -140,9 +141,11 @@ try {
 				// Prints off the content the BufferedReader gives
 				System.out.println(line);
 				// Zero means fail, anything else means successs
-				int exitValue = process.waitFor();
+				process.waitFor(1, TimeUnit.SECONDS);
+				process.destroy();
+				process.waitFor();
 				// Prints out success or failure
-				System.out.println("\n\nExit Value is " + exitValue);
+				//System.out.println("\n\nExit Value is " + exitValue);
 			}
 			// Closes the buffered reader
 			br.close();
@@ -155,7 +158,20 @@ try {
 			// Inform that a mistake happened in sendToConsole
 			System.out.println("Something went wrong in sendToConsole");
 		}
-		
+		/**Process process = Runtime.getRuntime().exec("tasklist");
+		BufferedReader reader =
+		new BufferedReader(new InputStreamReader(process.getInputStream()));
+		while ((reader.readLine()) != null) {}
+		process.waitFor(); 
+		Process process = new ProcessBuilder(command, and, arguments)
+    .redirectErrorStream(true)
+    .directory(workingDir)
+    .start();
+
+process.waitFor(5, TimeUnit.SECONDS);
+process.destroy();
+process.waitFor(); // wait for the process to terminate
+		**/
 		
 	}
 }

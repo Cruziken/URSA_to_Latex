@@ -54,14 +54,16 @@ public class FindAndReplace {
                  oldtext += line + "\r\n";
              }
              reader.close();
-
              String replacedtext  = oldtext.replaceAll("AUTHOR!!!", "" + author);
              replacedtext = replacedtext.replaceAll("TITLE!!!", "" + title);
              replacedtext = replacedtext.replaceAll("MENTOR!!!", "" + mentor);
              replacedtext = replacedtext.replaceAll("MAJOR!!!", "" + major);
              replacedtext = replacedtext.replaceAll("DEPARTMENT!!!", "" + college);
              replacedtext = replacedtext.replaceAll("ABSTRACT!!!", "" + abstracts);
+             //replacedtext = replacedtext.replaceAll("%", "/%");
              author = author.replaceAll(" ", "_");
+             
+  
              path = directory + "//"+  author + ".tex";
              FileWriter writer = new FileWriter(path);
              writer.write(replacedtext);

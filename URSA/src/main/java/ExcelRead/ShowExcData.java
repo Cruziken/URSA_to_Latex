@@ -34,34 +34,50 @@ public void showExelData(List data, String directory) {
 	            System.out.println("We here in show Excel data");
 	            //value =excelvals.getRichStringCellValue().getString();
 	            //System.out.println(value);
+	            
 	           if (j==0) {
 	            	String name = excelvals.getRichStringCellValue().getString();
+	            	//name = name.replaceAll("%", "\\%");
 	            	myFinder.setAuthor(name);
 	            	System.out.println(name);
 	            }
 	            else if (j==1) {
 	            	
 	            	String college = excelvals.getRichStringCellValue().getString();
+	            	//college = college.replaceAll("%", "\\%");
 	            	myFinder.setCollege(college);
 	            	System.out.println(college);
 	            }
 	            else if (j==2) {
 	            	String majors = excelvals.getRichStringCellValue().getString();
+	            	//majors = majors.replaceAll("%", "\\%");
 	            	myFinder.setMajor(majors);
 	            	System.out.println(majors);
 	            }
 	            else if (j==3) {
 	            	String Ra = excelvals.getRichStringCellValue().getString();
+	            	//Ra = Ra.replaceAll("%", "\\%");
 	            	myFinder.setMentor(Ra);
 	            	System.out.println(Ra);
 	            }
 	            else if (j==4) {
 	            	String title = excelvals.getRichStringCellValue().getString();
+	            	//title = title.replaceAll("%", "\\%");
+	            	title = title.replace("%", ("^^^^005c"+"^^^^0025"));
+	            	title = title.replace("&",  "^^^^0026");
 	            	myFinder.setTitle(title);
 	            	System.out.println(title);
 	            }
 	            else if (j==5)  {
 	            	String abstracts = excelvals.getRichStringCellValue().getString();
+	            	//StringBuilder quotes = new StringBuilder().append("\"");
+	            	//abstracts = abstracts.replace('"', ("^^^^0022"));
+	            	//abstracts = abstracts.replace(quotes, "Let us go");
+	            	abstracts = abstracts.replace( "\u201c", "^^^^201c" );  // 147
+	            	abstracts = abstracts.replace( "\u201d", "^^^^201d" );  // 148
+	            	abstracts = abstracts.replace("%", ("^^^^005c"+"^^^^0025"));
+	            	abstracts = abstracts.replace("\u2019", "^^^^2019");
+	            	abstracts = abstracts.replace("&", "^^^^0026");
 	            	myFinder.setAbstracts(abstracts);
 	            	System.out.println(abstracts);
 	            	myFinder.replaceVals(directory);
