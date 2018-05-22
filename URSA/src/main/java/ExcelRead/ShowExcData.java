@@ -64,7 +64,7 @@ public void showExelData(List data, String directory) {
 	            	String title = excelvals.getRichStringCellValue().getString();
 	            	//title = title.replaceAll("%", "\\%");
 	            	title = title.replace("%", ("^^^^005c"+"^^^^0025"));
-	            	title = title.replace("&",  "^^^^0026");
+	            	title = title.replace("&",  ("^^^^005c"+ "^^^^0026"));
 	            	myFinder.setTitle(title);
 	            	System.out.println(title);
 	            }
@@ -73,11 +73,15 @@ public void showExelData(List data, String directory) {
 	            	//StringBuilder quotes = new StringBuilder().append("\"");
 	            	//abstracts = abstracts.replace('"', ("^^^^0022"));
 	            	//abstracts = abstracts.replace(quotes, "Let us go");
+	            	//Format curly quotes: beginning
 	            	abstracts = abstracts.replace( "\u201c", "^^^^201c" );  // 147
+	            	//Format curly quotes: end
 	            	abstracts = abstracts.replace( "\u201d", "^^^^201d" );  // 148
+	            	
 	            	abstracts = abstracts.replace("%", ("^^^^005c"+"^^^^0025"));
 	            	abstracts = abstracts.replace("\u2019", "^^^^2019");
-	            	abstracts = abstracts.replace("&", "^^^^0026");
+	            	//Format ampersand &
+	            	abstracts = abstracts.replace("&", ("^^^^005c"+ "^^^^0026"));
 	            	myFinder.setAbstracts(abstracts);
 	            	System.out.println(abstracts);
 	            	myFinder.replaceVals(directory);
