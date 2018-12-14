@@ -19,22 +19,7 @@ public class ToLaTeX {
 		private static String directory;
 		private static String author;
 		private static String os;
-		
-/**public static void main (String[] args) {
-/**Process p;
-try {
-    p = Runtime.getRuntime().exec("C:\\Users\\b0c\\AppData\\Local\\Programs\\MiKTeX 2.9\\miktex\\bin\\x64\\pdflatex.exe -synctex=1 -interaction=nonstopmode C:\\Users\\b0c\\Documents\\TestWork.tex");
-    p.waitFor();
-    System.out.println("We Here");
-} catch (IOException e) {
-    // TODO Auto-generated catch block
-    e.printStackTrace();
-} catch (InterruptedException e) {
-    // TODO Auto-generated catch block
-    e.printStackTrace();
-} **/
 
-	
 	
 
 	/**
@@ -48,8 +33,8 @@ try {
 		 author = auth;
 		if (os.equals("Windows 10")) {
 			// Prints out correct commands for windows
-			String program = "\"C:\\Users\\b0c\\AppData\\Local\\Programs\\MiKTeX 2.9\\miktex\\bin\\x64\\lualatex.exe\"";
-			commands = program + " " + directit + "\\"+ author + ".tex"; 
+			String program = "\"C:\\Users\\Titanium\\AppData\\Local\\Programs\\MiKTeX 2.9\\miktex\\bin\\x64\\lualatex.exe\"";
+			commands = program + " -output-directory C:/URSA/PDFFiles " + directit + "\\"+ author + ".tex"; 
 			// gets the directory to start commands from
 			System.out.println("commands");
 		} else {
@@ -59,9 +44,9 @@ try {
 		// Directory is linux or windows depending on what the user passes
 		directory = directit;
 		// Prints out the commands
-		System.out.println(commands);
+		//System.out.println(commands);
 		// Prints out the directory
-		System.out.println(directory);
+		//System.out.println(directory);
 	}
 
 	/**
@@ -130,7 +115,7 @@ try {
 		// Creates a String variable called line
 		String line;
 		// Converts whatever command to console
-		System.out.printf("Output of running %s is:\n", Arrays.toString(command));
+		//System.out.printf("Output of running %s is:\n", Arrays.toString(command));
 		// In case the lines are duds
 		// System.out.println("wHat"); 
 		
@@ -139,18 +124,16 @@ try {
 			// the following
 			while ((line = br.readLine()) != null) {
 				// Prints off the content the BufferedReader gives
-				System.out.println(line);
+				//System.out.println(line);
 				// Zero means fail, anything else means successs
 				process.waitFor(1, TimeUnit.SECONDS);
 				process.destroy();
 				process.waitFor();
-				// Prints out success or failure
-				//System.out.println("\n\nExit Value is " + exitValue);
+				
 			}
 			// Closes the buffered reader
 			br.close();
-			//is.close();
-			//isr.close();
+			
 			
 		}
 		// ...print the followng statement if something goes wrong
@@ -158,20 +141,7 @@ try {
 			// Inform that a mistake happened in sendToConsole
 			System.out.println("Something went wrong in sendToConsole");
 		}
-		/**Process process = Runtime.getRuntime().exec("tasklist");
-		BufferedReader reader =
-		new BufferedReader(new InputStreamReader(process.getInputStream()));
-		while ((reader.readLine()) != null) {}
-		process.waitFor(); 
-		Process process = new ProcessBuilder(command, and, arguments)
-    .redirectErrorStream(true)
-    .directory(workingDir)
-    .start();
 
-process.waitFor(5, TimeUnit.SECONDS);
-process.destroy();
-process.waitFor(); // wait for the process to terminate
-		**/
 		
 	}
 }

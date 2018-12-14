@@ -11,6 +11,7 @@ public class FindAndReplace {
 	
 	private static String author, mentor, college, major, title, abstracts,path = null;
 	private static ToLaTeX mylu = null;
+	private static ConvertPDF myPDF = null;
 	public FindAndReplace(ToLaTeX myLua) {
 		// TODO Auto-generated constructor stub
 		mylu = myLua;
@@ -46,7 +47,7 @@ public class FindAndReplace {
         {
          try
              {
-             File file = new File("C://Users//b0c//Documents//Test.tex");
+             File file = new File("C:\\URSA\\template.tex");
              BufferedReader reader = new BufferedReader(new FileReader(file));
              String line = "", oldtext = "";
              while((line = reader.readLine()) != null)
@@ -72,11 +73,17 @@ public class FindAndReplace {
              writer.close();
              mylu.setVars(directory, author);
              mylu.commandPrompt();
+            // myPDF.makePDF(path);
          }
          catch (IOException ioe)
              {
              ioe.printStackTrace();
          }
      }
+	}
+	
+	public String getPath(){
+		return path;
+		
 	}
 }

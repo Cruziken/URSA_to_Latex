@@ -11,11 +11,11 @@ private static XSSFSheet sheet = null;
 private static String directory = null;
 
 
+
 		public static void startIt() {
 			ToLaTeX myLua = new ToLaTeX();
 			FindAndReplace myFind = new FindAndReplace(myLua);
-			
-			//ValuesWriter myValues = new ValuesWriter(); 
+			ConvertPDF myPDF = new ConvertPDF();
 			ShowExcData myExceldata = new ShowExcData(myFind);
 			IterateRow myIterator = new IterateRow();
 			ReadExcel myReadExcel = new ReadExcel();
@@ -28,8 +28,8 @@ private static String directory = null;
 	    public static void main(String[] path) {
 	// An excel file name. You can create a file name with a full
 	// path information.
-	    	 filename = path[0];
-	    	 directory = path[1];
+	    	 filename = "C:\\URSA\\ExcelFiles\\Symposium_Abstracts_2018.xlsx";//path[0];
+	    	 directory = "C:\\URSA\\LatexFiles";
 	         startIt();
 
 	    }
